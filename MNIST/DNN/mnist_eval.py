@@ -63,7 +63,7 @@ def evaluate(mnist):
 
 
 def main(argv=None):
-    mnist = input_data.read_data_sets('/Users/ZhanTao/Downloads/AI/tf_practice/MNIST/data', one_hot=True)
+    mnist = input_data.read_data_sets('../data', one_hot=True)
     evaluate(mnist)
 
 if __name__ == '__main__':

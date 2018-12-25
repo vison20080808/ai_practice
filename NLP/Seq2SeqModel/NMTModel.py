@@ -48,31 +48,34 @@ class NMTModel(object):
         src_emb = tf.nn.dropout(src_emb, KEEP_PROB)
         trg_emb = tf.nn.dropout(trg_emb, KEEP_PROB)
 
-        # with tf.variable_scope('encoder'):
-        #     enc_outputs, enc_state = tf.nn.dynamic_rnn(
-        #         self.enc_cell, src_emb, src_size, dtype=tf.float32
-        #     )
-        #
-        # with tf.variable_scope('decoder'):
-        #     dec_outputs, _  = tf.nn.dynamic_rnn(
-        #         self.dec_cell, trg_emb, trg_size, initial_state=enc_state
-        #     )
-
-        # 注意力模型实践 --------start----------
-        self.enc_cell_fw = tf.nn.rnn_cell.BasicLSTMCell(HIDDEN_SIZE)
-        self.enc_cell_bw = tf.nn.rnn_cell.BasicLSTMCell(HIDDEN_SIZE)
-
         with tf.variable_scope('encoder'):
-            enc_outputs, enc_state = tf.nn.bidirectional_dynamic_rnn(self.enc_cell_fw, self.enc_cell_bw, src_emb, src_size, dtype=tf.float32)
-            enc_outputs = tf.concat([enc_outputs[0], enc_outputs[1]], -1)
+            enc_outputs, enc_state = tf.nn.dynamic_rnn(
+                self.enc_cell, src_emb, src_size, dtype=tf.float32
+            )
 
         with tf.variable_scope('decoder'):
-            attention_mechanism = tf.contrib.seq2seq.BahdanauAttention(
-                HIDDEN_SIZE, enc_outputs, memory_sequence_length=src_size
+            dec_outputs, _  = tf.nn.dynamic_rnn(
+                self.dec_cell, trg_emb, trg_size, initial_state=enc_state
             )
-            attention_cell = tf.contrib.seq2seq.AttentionWrapper(self.dec_cell, attention_mechanism, attention_layer_size=HIDDEN_SIZE)
 
-            dec_outputs, _ = tf.nn.dynamic_rnn(attention_cell, trg_emb, trg_size, dtype=tf.float32)
+        # tf.estimator
+        # tf.keras.layers
+
+        # 注意力模型实践 --------start----------
+        # self.enc_cell_fw = tf.nn.rnn_cell.BasicLSTMCell(HIDDEN_SIZE)
+        # self.enc_cell_bw = tf.nn.rnn_cell.BasicLSTMCell(HIDDEN_SIZE)
+        #
+        # with tf.variable_scope('encoder'):
+        #     enc_outputs, enc_state = tf.nn.bidirectional_dynamic_rnn(self.enc_cell_fw, self.enc_cell_bw, src_emb, src_size, dtype=tf.float32)
+        #     enc_outputs = tf.concat([enc_outputs[0], enc_outputs[1]], -1)
+        #
+        # with tf.variable_scope('decoder'):
+        #     attention_mechanism = tf.contrib.seq2seq.BahdanauAttention(
+        #         HIDDEN_SIZE, enc_outputs, memory_sequence_length=src_size
+        #     )
+        #     attention_cell = tf.contrib.seq2seq.AttentionWrapper(self.dec_cell, attention_mechanism, attention_layer_size=HIDDEN_SIZE)
+        #
+        #     dec_outputs, _ = tf.nn.dynamic_rnn(attention_cell, trg_emb, trg_size, dtype=tf.float32)
         # 注意力模型实践 --------end----------
 
 

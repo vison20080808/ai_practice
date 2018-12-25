@@ -7,7 +7,7 @@ import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 import numpy as np
 
-mnist = input_data.read_data_sets('/Users/ZhanTao/Downloads/AI/tf_practice/MNIST/data', one_hot=True)
+mnist = input_data.read_data_sets('../data', one_hot=True)
 
 lr = 0.001
 

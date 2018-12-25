@@ -140,6 +140,9 @@ def main():
         _, test_pplx = run_epoch(session, eval_model, test_batches, tf.no_op(), False, 0)
         print('Test Perplexity: %.3f' % test_pplx)
 
+        # Epoch: 5 Train Perplexity: 88.928
+        # Test Perplexity: 108.612
+
 
 if __name__ == '__main__':
     main()
