@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/ZhanTao/Downloads/Coding/Git/ai_practice/NLP/tensorflow_cookbook/temp/cbow_movie_embeddings.ckpt"
+all_model_checkpoint_paths: "/Users/ZhanTao/Downloads/Coding/Git/ai_practice/NLP/tensorflow_cookbook/temp/cbow_movie_embeddings.ckpt"

@@ -94,7 +94,7 @@ def normalize_text(texts, stops):
     # Lower case
     texts = [x.lower() for x in texts]
 
-    # Remove punctuation
+    # 去除 标点符号
     texts = [''.join(c for c in x if c not in string.punctuation) for x in texts]
 
     # Remove numbers
