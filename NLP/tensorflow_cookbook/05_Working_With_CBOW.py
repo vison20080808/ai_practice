@@ -20,7 +20,7 @@ from nltk.corpus import stopwords
 from tensorflow.python.framework import ops
 ops.reset_default_graph()
 
-import text_helpers
+from . import text_helpers
 
 
 data_folder_name = 'temp'
