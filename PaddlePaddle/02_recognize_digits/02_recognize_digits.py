@@ -1,4 +1,5 @@
 
+# http://www.paddlepaddle.org/documentation/docs/zh/1.2/beginners_guide/quick_start/recognize_digits/README.cn.html
 
 # 基于MNIST数据训练一个分类器
 
@@ -43,7 +44,7 @@ import paddle
 import paddle.fluid as fluid
 
 
-# Program Functions 配置
+# Program Functions 配置（inference_program）
 # 想用这个程序来演示三个不同的分类器，每个分类器都定义为 Python 函数。
 
 def softmax_regression():
