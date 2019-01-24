@@ -211,6 +211,7 @@ def train(if_use_cuda, params_dirname, is_sparse=True):
                     outs = train_test(test_program, test_reader)
 
                     print("Step %d: Average Cost %f" % (step, outs[0]))
+                    # Step 54440: Average Cost 5.199974
 
                     # 如果平均成本低于5.8，我们认为该模型足以停止。为了获得更好的模型，应该目标avg_cost低于3.5
                     if outs[0] < 5.2: #5.8:
@@ -269,15 +270,21 @@ def infer(use_cuda, params_dirname=None):
             return_numpy=False)
 
         print(numpy.array(results[0]))
+        # [[3.4853272e-02 6.8303589e-03 1.2671137e-01 ... 2.9701416e-05
+        #   1.9372254e-05 2.0426750e-02]]
+
+        print([key for key, value in six.iteritems(word_dict) if value <= 10])
+        # [b'the', b'<unk>', '<e>', '<s>', b'N', b'of', b'to', b'a', b'in', b'and', b"'s"]
+
         most_possible_word_index = numpy.argmax(results[0])
-        print(most_possible_word_index)
+        print(most_possible_word_index)  # 4
         print([
             key for key, value in six.iteritems(word_dict) if value == most_possible_word_index
-        ][0])
+        ][0])  # b'N'
 
-        print(results[0].recursive_sequence_lengths())
+        print(results[0].recursive_sequence_lengths())  # [[1]]
         np_data = numpy.array(results[0])
-        print("Inference Shape: ", np_data.shape)
+        print("Inference Shape: ", np_data.shape)  # Inference Shape:  (1, 2074)
 
 
 def main(use_cuda, is_sparse):
