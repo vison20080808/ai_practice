@@ -34,7 +34,7 @@ C4.5算法：选择信息增益比
 损失函数 = 预测误差 + 模型复杂度。
 自底向上，从叶结点向上回缩，剪掉不必要的叶结点。
 
-CART算法（分类与回归树 classification and regression tree）：1984年提出，基尼指数Gini()，待后续跟进...
+CART算法（分类与回归树 classification and regression tree）：1984年提出，基尼指数Gini()，详见子目录...
 
 
 
