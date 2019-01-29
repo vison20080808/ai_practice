@@ -248,6 +248,8 @@ def train(use_cuda):
             if event.step % 10 == 0:
                 print('pass_id=' + str(event.epoch) + ' batch=' + str(
                     event.step))
+            elif event.step % 90000 == 0:
+                trainer.save_params(model_save_dir)
 
         if isinstance(event, EndEpochEvent):
             trainer.save_params(model_save_dir)
