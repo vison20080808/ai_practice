@@ -285,9 +285,9 @@ def train(use_cuda, params_dirname):
 
                 test_avg_cost = np.array(avg_cost_set).mean()
                 print("avg_cost: %s" % test_avg_cost)
+                # avg_cost: 2.5996728859594107
 
-                # if test_avg_cost < 4.0: # Change this number to adjust accuracy
-                if batch_id == 5000:
+                if test_avg_cost < 2.6: # Change this number to adjust accuracy
                     if params_dirname is not None:
                         fluid.io.save_inference_model(params_dirname, [
                             "user_id", "gender_id", "age_id", "job_id",
@@ -297,6 +297,7 @@ def train(use_cuda, params_dirname):
                 else:
                     print('PassId {0}, BatchID {1}, Test Loss {2:0.2}'.format(
                         pass_id + 1, batch_id, float(test_avg_cost)))
+                    # PassId 3, BatchID 3042, Test Loss 2.6
 
                 if math.isnan(float(out[0])):
                     sys.exit("got NaN loss, training failed.")
@@ -368,6 +369,8 @@ def infer(use_cuda, params_dirname):
               "\" is " + str(predict_rating[0][0]))
         print("Actual Rating of user id 1 on movie \"" + infer_movie_name +
               "\" is 4.")
+        # Predict Rating of user id 1 on movie "Hunchback of Notre Dame, The " is 2.5379047
+        # Actual Rating of user id 1 on movie "Hunchback of Notre Dame, The " is 4.
 
 
 def main(use_cuda):
