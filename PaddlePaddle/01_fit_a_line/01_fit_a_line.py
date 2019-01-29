@@ -15,6 +15,7 @@ import sys
 # http://www.paddlepaddle.org/documentation/docs/zh/1.2/beginners_guide/quick_start/fit_a_line/README.cn.html
 
 # 配置数据提供器(Datafeeder)
+# 数据下载的过程。下载数据保存在~/.cache/paddle/dataset/uci_housing/housing.data。
 
 BATCH_SIZE = 20
 

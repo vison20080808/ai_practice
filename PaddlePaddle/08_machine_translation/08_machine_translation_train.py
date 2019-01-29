@@ -250,6 +250,8 @@ def train(use_cuda):
                     event.step))
             elif event.step % 90000 == 0:
                 trainer.save_params(model_save_dir)
+                print("trainer.save_params(model_save_dir)，model_save_dir=", model_save_dir)
+                return
 
         if isinstance(event, EndEpochEvent):
             trainer.save_params(model_save_dir)
