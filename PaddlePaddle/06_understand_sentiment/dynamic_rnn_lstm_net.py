@@ -145,6 +145,7 @@ def train(use_cuda, params_dirname):
                     print('Step {0}, Test Loss {1:0.2}, Acc {2:0.2}'.format(
                         step_id, avg_cost_test, acc_test))
                     # Step 29, Test Loss 0.68, Acc 0.6
+                    # Step 189, Test Loss 0.58, Acc 0.68
 
                     print("Step {0}, Epoch {1} Metrics {2}".format(
                         step_id, epoch_id, list(map(np.array, metrics))))
@@ -197,7 +198,9 @@ def infer(use_cuda, params_dirname=None):
         for i, r in enumerate(np_data):
             print("Predict probability of ", r[0], " to be positive and ", r[1],
                   " to be negative for review \'", reviews_str[i], "\'")
-
+            # Predict probability of  0.5360332  to be positive and  0.4639668  to be negative for review ' read the book forget the movie '
+            # Predict probability of  0.5418475  to be positive and  0.4581525  to be negative for review ' this is a great movie '
+            # Predict probability of  0.5484492  to be positive and  0.45155075  to be negative for review ' this is very bad '
 
 def main(use_cuda):
     if use_cuda and not fluid.core.is_compiled_with_cuda():

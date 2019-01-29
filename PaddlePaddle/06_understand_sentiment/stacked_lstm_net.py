@@ -137,9 +137,11 @@ def train(use_cuda, params_dirname):
                     print('Step {0}, Test Loss {1:0.2}, Acc {2:0.2}'.format(
                         step_id, avg_cost_test, acc_test))
                     # Step 29, Test Loss 0.47, Acc 0.78
+                    # Step 189, Test Loss 0.33, Acc 0.85
 
                     print("Step {0}, Epoch {1} Metrics {2}".format(
                         step_id, epoch_id, list(map(np.array, metrics))))
+                    # Step 189, Epoch 0 Metrics [array([0.3089075], dtype=float32), array([0.875], dtype=float32)]
 
                 if math.isnan(float(metrics[0])):
                     sys.exit("got NaN loss, training failed.")
@@ -190,6 +192,9 @@ def infer(use_cuda, params_dirname=None):
             print("Predict probability of ", r[0], " to be positive and ", r[1],
                   " to be negative for review \'", reviews_str[i], "\'")
 
+        # Predict probability of  0.4945391  to be positive and  0.5054609  to be negative for review ' read the book forget the movie '
+        # Predict probability of  0.49494052  to be positive and  0.5050595  to be negative for review ' this is a great movie '
+        # Predict probability of  0.49530643  to be positive and  0.50469357  to be negative for review ' this is very bad '
 
 def main(use_cuda):
     if use_cuda and not fluid.core.is_compiled_with_cuda():
