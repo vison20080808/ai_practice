@@ -48,3 +48,6 @@
 预测问题（P(I | O)）：
 1、近似算法：每个时刻T，选择最有可能出现的状态iT
 2、维特比Viterbi算法：动态规划求概率最大路径（最优路径），此时一条路径对应着一个状态序列。
+
+最佳实践：
+from pomegranate import State, HiddenMarkovModel
