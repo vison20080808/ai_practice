@@ -53,6 +53,8 @@ class NMTModel(object):
                 self.enc_cell, src_emb, src_size, dtype=tf.float32
             )
 
+        # 对于seq2seq的decoder，它在训练阶段和预测阶段对rnn的输出的处理可能是不一样的，比如在训练阶段可能对rnn的输出不处理，直接用target的序列作为下时刻的输入，如上图一。
+        # 而预测阶段会将rnn的输出当成是下一时刻的输入，因为此时已经没有target序列可以作为输入了，如上图二。
         with tf.variable_scope('decoder'):
             dec_outputs, _  = tf.nn.dynamic_rnn(
                 self.dec_cell, trg_emb, trg_size, initial_state=enc_state
