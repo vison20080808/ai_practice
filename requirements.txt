@@ -37,7 +37,7 @@ layer==0.1.14
 lxml==4.2.5
 Markdown==3.0.1
 matplotlib==2.2.3
-nltk==3.4
+nltk==3.4.5
 numpy==1.14.5
 opencv-python==4.0.0.21
 paddlepaddle==1.2.1
