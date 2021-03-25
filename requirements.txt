@@ -61,7 +61,7 @@ pyparsing==2.3.0
 pyscreenshot==0.5.1
 python-dateutil==2.7.5
 pytz==2018.7
-PyYAML==3.13
+PyYAML==5.4
 queuelib==1.5.0
 rarfile==3.0
 recordio==0.1.7
