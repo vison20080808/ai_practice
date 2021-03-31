@@ -34,7 +34,7 @@ Keras-Applications==1.0.6
 Keras-Preprocessing==1.0.5
 kiwisolver==1.0.1
 layer==0.1.14
-lxml==4.2.5
+lxml==4.6.3
 Markdown==3.0.1
 matplotlib==2.2.3
 nltk==3.4
