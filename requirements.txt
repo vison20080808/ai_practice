@@ -68,7 +68,7 @@ recordio==0.1.7
 requests==2.9.2
 scikit-learn==0.20.1
 scipy==1.2.0
-Scrapy==1.5.1
+Scrapy==1.8.1
 service-identity==17.0.0
 singledispatch==3.4.0.3
 six==1.11.0
